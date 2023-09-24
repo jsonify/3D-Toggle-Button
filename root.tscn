@@ -1,0 +1,261 @@
+[gd_scene load_steps=18 format=3 uid="uid://oflepkrff6mb"]
+
+[ext_resource type="Texture2D" uid="uid://dkae2bpmhkkgl" path="res://assets/slotBase.png" id="1_awi73"]
+[ext_resource type="Script" path="res://root.gd" id="1_ijwq0"]
+[ext_resource type="Texture2D" uid="uid://j6luw20na5su" path="res://assets/slotOn.png" id="2_54kqv"]
+[ext_resource type="Texture2D" uid="uid://cywt0vgt62ri5" path="res://assets/knobShadow.png" id="3_awvnf"]
+[ext_resource type="Texture2D" uid="uid://0ptjpenjvtay" path="res://assets/knob.png" id="4_vn5ds"]
+[ext_resource type="Script" path="res://toggle_tree.gd" id="5_v1dty"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5akg4"]
+bg_color = Color(0.286275, 0.294118, 0.352941, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ot2n2"]
+
+[sub_resource type="Animation" id="Animation_euhqh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Knob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(56, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KnobShadow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(43, -18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlotOn:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1q6sg"]
+resource_name = "ToggleOff"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Knob:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(-18, -10), Vector2(56, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KnobShadow:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Vector2(-31, -18), Vector2(43, -18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlotOn:self_modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15, 0.5),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w003k"]
+resource_name = "ToggleOn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Knob:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(56, -10), Vector2(-18, -10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KnobShadow:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(43, -18), Vector2(-31, -18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlotOn:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15, 0.5),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmqoc"]
+_data = {
+"RESET": SubResource("Animation_euhqh"),
+"ToggleOff": SubResource("Animation_1q6sg"),
+"ToggleOn": SubResource("Animation_w003k")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x57rf"]
+animation = &"ToggleOff"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pjeat"]
+animation = &"ToggleOn"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mq2m0"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ckscm"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_jupkc"]
+states/ToggleOff/node = SubResource("AnimationNodeAnimation_x57rf")
+states/ToggleOff/position = Vector2(388.5, 63.5)
+states/ToggleOn/node = SubResource("AnimationNodeAnimation_pjeat")
+states/ToggleOn/position = Vector2(611, 61.5)
+transitions = ["ToggleOff", "ToggleOn", SubResource("AnimationNodeStateMachineTransition_mq2m0"), "ToggleOn", "ToggleOff", SubResource("AnimationNodeStateMachineTransition_ckscm")]
+
+[node name="root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ijwq0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.109804, 0.113725, 0.156863, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -108.0
+offset_right = 187.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5akg4")
+
+[node name="ToggleButton" type="CheckButton" parent="Panel"]
+custom_minimum_size = Vector2(96, 34)
+layout_mode = 0
+offset_left = 160.0
+offset_top = 91.0
+offset_right = 204.0
+offset_bottom = 115.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ot2n2")
+
+[node name="SlotBase" type="NinePatchRect" parent="Panel/ToggleButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_awi73")
+
+[node name="SlotOn" type="NinePatchRect" parent="Panel/ToggleButton"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_54kqv")
+
+[node name="KnobShadow" type="NinePatchRect" parent="Panel/ToggleButton"]
+custom_minimum_size = Vector2(83, 83)
+layout_mode = 0
+offset_left = 43.0
+offset_top = -18.0
+offset_right = 126.0
+offset_bottom = 65.0
+pivot_offset = Vector2(41, 41)
+texture = ExtResource("3_awvnf")
+
+[node name="Knob" type="NinePatchRect" parent="Panel/ToggleButton"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 0
+offset_left = 56.0
+offset_top = -10.0
+offset_right = 112.0
+offset_bottom = 46.0
+pivot_offset = Vector2(28, 28)
+texture = ExtResource("4_vn5ds")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/ToggleButton"]
+libraries = {
+"": SubResource("AnimationLibrary_vmqoc")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Panel/ToggleButton"]
+tree_root = SubResource("AnimationNodeStateMachine_jupkc")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+script = ExtResource("5_v1dty")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 253.0
+offset_right = 729.0
+offset_bottom = 301.0
+text = "No Magic"
+horizontal_alignment = 1
+
+[connection signal="toggled" from="Panel/ToggleButton" to="Panel/ToggleButton/AnimationTree" method="_on_toggle_button_toggled"]
