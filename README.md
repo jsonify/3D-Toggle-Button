@@ -4,7 +4,7 @@
 
 The **Stylized 3D Toggle Button** is a project built using the Godot game engine. It features a stylish toggle button with a 3D appearance, perfect for enhancing interactivity in your Godot game or application. The button assets were initially created in Figma and subsequently integrated into Godot to provide full functionality. This project was built as a tutorial to help other Godot user get an introduction into using the UI container nodes that Godot has to offer.
 
-You can view and follow along with the tutorial [here](#).
+You can view and follow along with the tutorial [here](https://youtu.be/L_M8jebQWOQ).
 
 ## Features
 
