@@ -19,7 +19,7 @@ You can view and follow along with the tutorial [here](https://youtu.be/L_M8jebQ
     
     ```bash
     
-    `git clone https://github.com/your-username/Stylized-3D-Toggle-Button.git`
+    `git clone https://github.com/jsonify/Stylized-3D-Toggle-Button.git`
     
 2.  Open the project using Godot Engine.
     
