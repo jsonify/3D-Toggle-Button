@@ -26,17 +26,6 @@ You can view and follow along with the tutorial [here](https://youtu.be/L_M8jebQ
 3.  Explore the project to gain insights into how the 3D toggle button is implemented and adapt it to your specific requirements.
     
 
-## Customization
-
-You can effortlessly customize the Stylized 3D Toggle Button to align with your project's aesthetics:
-
-*   **Textures**: Replace the button textures located in the `textures` folder with your own designs. Ensure you maintain the same naming conventions for proper functionality.
-    
-*   **Colors and Materials**: Adjust the button's 3D appearance by modifying materials, shaders, and colors through Godot's inspector.
-    
-*   **Functionality**: Customize the button's behavior and actions by editing the associated scripts and signals.
-    
-
 ## Contributing
 
 Contributions are welcome! This is merely a simple calculator, but it could be a whole lot more. If you'd like to contribute to this project, please follow these steps:
